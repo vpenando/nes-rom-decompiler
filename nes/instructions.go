@@ -241,7 +241,7 @@ const (
 
 	// STY
 	
-	StyZero Page   byte = 0x84
+	StyZeroPage    byte = 0x84
 	StyZeroPageX   byte = 0x94
 	StyAbsolute    byte = 0x8C
 )
