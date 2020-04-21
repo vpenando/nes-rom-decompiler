@@ -12,6 +12,9 @@ const (
 	AdcIndirectX   byte = 0x61
 	AdcIndirectY   byte = 0x71
 
+)
+
+const (
 	// AND
 
 	AndImmediate   byte = 0x29
@@ -22,7 +25,9 @@ const (
 	AndAbsoluteY   byte = 0x39
 	AndIndirectX   byte = 0x21
 	AndIndirectY   byte = 0x31
+)
 
+const (
 	// ASL
 
 	AslImmediate   byte = 0x0A
@@ -30,12 +35,16 @@ const (
 	AslZeroPageX   byte = 0x16
 	AslAbsolute    byte = 0x0E
 	AslAbsoluteX   byte = 0x1E
+)
 
+const (
 	// BIT
 
 	BitZeroPage    byte = 0x24
 	BitAbsolute    byte = 0x2C
+)
 
+const (
 	// Branches
 
 	Bpl            byte = 0x10
@@ -46,11 +55,15 @@ const (
 	Bcs            byte = 0xB0
 	Bne            byte = 0xD0
 	Beq            byte = 0xF0
+)
 
+const (
 	// BRK
 
 	Brk            byte = 0x00
+)
 
+const (
 	// CMP
 
 	CmpImmediate   byte = 0xC9
@@ -61,26 +74,34 @@ const (
 	CmpAbsoluteY   byte = 0xD9
 	CmpIndirectX   byte = 0xC1
 	CmpIndirectY   byte = 0xD1
+)
 
+const (
 	// CPX
 
 	CpxImmediate   byte = 0xE0
 	CpxZeroPage    byte = 0xE4
 	CpxAbsolute    byte = 0xEC
+)
 
+const (
 	// CPY
 
 	CpyImmediate   byte = 0xC0
 	CpyZeroPage    byte = 0xC4
 	CpyAbsolute    byte = 0xCC
+)
 
+const (
 	// DEC
 
 	DecZeroPage    byte = 0xC6
 	DecZeroPageX   byte = 0xD6
 	DecAbsolute    byte = 0xCE
 	DecAbsoluteX   byte = 0xDE
+)
 
+const (
 	// EOR
 
 	EorImmediate   byte = 0x49
@@ -91,7 +112,9 @@ const (
 	EorAbsoluteY   byte = 0x59
 	EorIndirectX   byte = 0x41
 	EorIndirectY   byte = 0x51
+)
 
+const (
 	// Processor status
 
 	Clc            byte = 0x18
@@ -101,23 +124,31 @@ const (
 	Clv            byte = 0xB8
 	Cld            byte = 0xD8
 	Sed            byte = 0xF8
+)
 
+const (
 	// INC
 
 	IncZeroPage    byte = 0xE6
 	IncZeroPageX   byte = 0xF6
 	IncAbsolute    byte = 0xEE
 	IncAbsoluteX   byte = 0xFE
-	
+)
+
+const (
 	// JMP
 
 	JmpAbsolute    byte = 0x4C
 	JmpIndirect    byte = 0x6C
+)
 
+const (
 	// JSR
 
 	JsrAbsolute    byte = 0x20
+)
 
+const (
 	// LDA
 
 	LdaImmediate   byte = 0xA9
@@ -128,7 +159,9 @@ const (
 	LdaAbsoluteY   byte = 0xB9
 	LdaIndirectX   byte = 0xA1
 	LdaIndirectY   byte = 0xB1
+)
 
+const (
 	// LDX
 
 	LdxImmediate   byte = 0xA2
@@ -136,7 +169,9 @@ const (
 	LdxZeroPageY   byte = 0xB6
 	LdxAbsolute    byte = 0xAE
 	LdxAbsoluteY   byte = 0xBE
+)
 
+const (
 	// LDY
 
 	LdyImmediate   byte = 0xA0
@@ -144,7 +179,9 @@ const (
 	LdyZeroPageX   byte = 0xB4
 	LdyAbsolute    byte = 0xAC
 	LdyAbsoluteX   byte = 0xBC
+)
 
+const (
 	// LSR
 
 	LsrAccumulator byte = 0x4A
@@ -152,11 +189,15 @@ const (
 	LsrZeroPageX   byte = 0x56
 	LsrAbsolute    byte = 0x4E
 	LsrAbsoluteX   byte = 0x5E
+)
 
+const (
 	// NOP
 
 	NopImplied     byte = 0xEA
+)
 
+const (
 	// ORA
 
 	OraImmediate   byte = 0x09
@@ -167,7 +208,9 @@ const (
 	OraAbsoluteY   byte = 0x19
 	OraIndirectX   byte = 0x01
 	OraIndirectY   byte = 0x11
+)
 
+const (
 	// Register transfers
 
 	Tax            byte = 0xAA
@@ -178,7 +221,9 @@ const (
 	Tya            byte = 0x98
 	Dey            byte = 0x88
 	Iny            byte = 0xC8
-	
+)
+
+const (
 	// ROL
 
 	RolAccumulator byte = 0x2A
@@ -186,7 +231,9 @@ const (
 	RolZeroPageX   byte = 0x36
 	RolAbsolute    byte = 0x2E
 	RolAbsoluteX   byte = 0x3E
+)
 
+const (
 	// ROR
 
 	RorAccumulator byte = 0x6A
@@ -194,15 +241,21 @@ const (
 	RorZeroPageX   byte = 0x76
 	RorAbsolute    byte = 0x6E
 	RorAbsoluteX   byte = 0x7E
+)
 
+const (
 	// RTI
 
 	RtiImplied     byte = 0x40
+)
 
+const (
 	// RTS
 
 	RtsImplied     byte = 0x60
+)
 
+const (
 	// SBC
 
 	SbcImmediate   byte = 0xE9
@@ -213,7 +266,9 @@ const (
 	SbcAbsoluteY   byte = 0xF9
 	SbcIndirectX   byte = 0xE1
 	SbcIndirectY   byte = 0xF1
+)
 
+const (
 	// STA
 
 	StaZeroPage    byte = 0x85
@@ -223,7 +278,9 @@ const (
 	StaAbsoluteY   byte = 0x99
 	StaIndirectX   byte = 0x81
 	StaIndirectY   byte = 0x91
+)
 
+const (
 	// Stack
 
 	Txs            byte = 0x9A
@@ -232,13 +289,17 @@ const (
 	Pla            byte = 0x68
 	Php            byte = 0x08
 	Plp            byte = 0x28
+)
 
+const (
 	// STX
 
 	StxZeroPage    byte = 0x86
 	StxZeroPageY   byte = 0x96
 	StxAbsolute    byte = 0x8E
+)
 
+const (
 	// STY
 	
 	StyZeroPage    byte = 0x84
