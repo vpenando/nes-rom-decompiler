@@ -16,7 +16,7 @@ func byteToHexString(b byte) string {
 // of a literal value.
 // Example: ByteToImmediateValue(10) == "#$0A"
 func ByteToImmediateValue(b byte) string {
-	hexByte := ByteToHexString(b)
+	hexByte := byteToHexString(b)
 	return fmt.Sprintf("#$%s", hexByte)
 }
 
@@ -32,7 +32,7 @@ func BytesToZeroPageAddress(b byte) string {
 // a 6502 address (big endian).
 // Example: BytesToAddress(52, 18) == "$1234"
 func BytesToAddress(upper, lower byte) string {
-	upperByte := ByteToHexString(upper)
-	lowerByte := ByteToHexString(lower)
+	upperByte := byteToHexString(upper)
+	lowerByte := byteToHexString(lower)
 	return fmt.Sprintf("$%s%s", lowerByte, upperByte)
 }
