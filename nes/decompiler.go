@@ -7,7 +7,8 @@ import (
 // HexBuffer is a raw buffer containing bytes
 type HexBuffer []byte
 
-// RomPrg is a raw NES ROM PRG
+// RomPrg represents NES ROM PRG
+// It holds an internal buffer and an index
 type RomPrg struct {
 	hexBuffer HexBuffer
 	index int
@@ -23,19 +24,4 @@ func (prg *RomPrg) Next() (byte, error) {
 	next := prg.hexBuffer[prg.index]
 	prg.index++
 	return next, nil
-}
-
-func ByteToHexString(b byte) string {
-	return fmt.Sprintf("%x", b)
-}
-
-func ByteToImmediateValue(b byte) string {
-	hexByte := ByteToHexString(b)
-	return fmt.Sprintf("#$%s", hexByte)
-}
-
-func BytesToAddress(upper, lower byte) string {
-	upperByte := ByteToHexString(upper)
-	lowerByte := ByteToHexString(lower)
-	return fmt.Sprintf("$%s%s", lowerByte, upperByte)
 }
