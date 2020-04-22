@@ -372,6 +372,8 @@ func Decompile(prg *PrgRom) string {
 	case StyAbsolute:
 		stringInst = fmt.Sprintf("STY %s", BytesToAddress(nextByte(prg), nextByte(prg)))
 
+	default:
+		stringInst = fmt.Sprintf("; Unknown opcode %s", ByteToHexString(nextByte(prg)))
 	}
 	
 	return fmt.Sprintf("%s\n%s", stringInst, Decompile(prg))

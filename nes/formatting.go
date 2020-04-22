@@ -5,10 +5,10 @@ import (
 	"strings"
 )
 
-// byteToHexString returns the hex equivalent
+// ByteToHexString returns the hex equivalent
 // of a given byte.
 // Example: byteToHexString(10) == "0A"
-func byteToHexString(b byte) string {
+func ByteToHexString(b byte) string {
 	return strings.ToUpper(fmt.Sprintf("%x", b))
 }
 
