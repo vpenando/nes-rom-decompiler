@@ -194,6 +194,47 @@ func Decompile(prg *PrgRom) string {
 	case JsrAbsolute:
 		stringInst = fmt.Sprintf("JSR %s", BytesToAddress(nextByte(prg), nextByte(prg)))
 
+	// LDA
+	case LdaImmediate:
+		stringInst = fmt.Sprintf("LDA %s", ByteToImmediateValue(nextByte(prg)))
+	case LdaZeroPage:
+		stringInst = fmt.Sprintf("LDA %s", ByteToZeroPageAddress(nextByte(prg)))
+	case LdaZeroPageX:
+		stringInst = fmt.Sprintf("LDA %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case LdaAbsolute:
+		stringInst = fmt.Sprintf("LDA %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case LdaAbsoluteX:
+		stringInst = fmt.Sprintf("LDA %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case LdaAbsoluteY:
+		stringInst = fmt.Sprintf("LDA %s,Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case LdaIndirectX:
+		stringInst = fmt.Sprintf("LDA (%s,X)", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case LdaIndirectY:
+		stringInst = fmt.Sprintf("LDA (%s),Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// LDX
+	case LdxImmediate:
+		stringInst = fmt.Sprintf("LDX %s", ByteToImmediateValue(nextByte(prg)))
+	case LdxZeroPage:
+		stringInst = fmt.Sprintf("LDX %s", ByteToZeroPageAddress(nextByte(prg)))
+	case LdxZeroPageY:
+		stringInst = fmt.Sprintf("LDX %s,Y", ByteToZeroPageAddress(nextByte(prg)))
+	case LdxAbsolute:
+		stringInst = fmt.Sprintf("LDX %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case LdxAbsoluteY:
+		stringInst = fmt.Sprintf("LDX %s,Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// LDY
+	case LdyImmediate:
+		stringInst = fmt.Sprintf("LDY %s", ByteToImmediateValue(nextByte(prg)))
+	case LdyZeroPage:
+		stringInst = fmt.Sprintf("LDY %s", ByteToZeroPageAddress(nextByte(prg)))
+	case LdyZeroPageX:
+		stringInst = fmt.Sprintf("LDY %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case LdyAbsolute:
+		stringInst = fmt.Sprintf("LDY %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case LdyAbsoluteX:
+		stringInst = fmt.Sprintf("LDY %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
 
 	}
 	
