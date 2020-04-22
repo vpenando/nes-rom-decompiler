@@ -57,5 +57,5 @@ func tryReadRom() []byte {
 
 func main() {
 	rom := tryReadRom()
-	fmt.Println(byte(rom[0]))
+	fmt.Println(nes.IsNesFile(rom))
 }
