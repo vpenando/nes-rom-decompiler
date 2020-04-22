@@ -25,3 +25,7 @@ func (prg *RomPrg) Next() (byte, error) {
 	prg.index++
 	return next, nil
 }
+
+func IsNesFile(rom []byte) bool {
+	return len(rom) > 3 && string(rom[0:3]) == "NES" && rom[3] == 0x1A
+}
