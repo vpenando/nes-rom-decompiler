@@ -57,12 +57,11 @@ func tryReadRom() []byte {
 
 func main() {
 	rom := tryReadRom()
-	var prg []byte
+	var prg *nes.PrgRom
 	if nes.IsNes2File(rom) {
 		prg = nes.ReadNes2PrgRom(rom)
-	}
-	else if nes.IsNesFile(rom) {
+	} else if nes.IsNesFile(rom) {
 		prg = nes.ReadNesPrgRom(rom)
 	}
-	fmt.Println(nes.IsNesFile(rom))
+	fmt.Println(len(prg))
 }

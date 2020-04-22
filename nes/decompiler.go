@@ -58,3 +58,7 @@ func (prg *PrgRom) Next() (byte, error) {
 	prg.index++
 	return next, nil
 }
+
+func (prg PrgRom) Size() int {
+	return len(prg.hexBuffer)
+}
