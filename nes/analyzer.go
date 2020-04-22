@@ -7,5 +7,5 @@ func IsNesFile(rom []byte) bool {
 }
 
 func IsNes2File(rom []byte) bool {
-	return IsNesFile(rom) && len(rom) >= 8 (rom[7] & 0x0C) == 0x08)
+	return IsNesFile(rom) && len(rom) >= 8 (rom[7] & 0x0C) == 0x08
 }
