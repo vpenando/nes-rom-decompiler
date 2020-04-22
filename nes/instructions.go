@@ -1,8 +1,7 @@
 package nes
 
+// ADC
 const (
-	// ADC
-
 	AdcImmediate   byte = 0x69
 	AdcZeroPage    byte = 0x65
 	AdcZeroPageX   byte = 0x75
@@ -11,12 +10,10 @@ const (
 	AdcAbsoluteY   byte = 0x79
 	AdcIndirectX   byte = 0x61
 	AdcIndirectY   byte = 0x71
-
 )
 
+// AND
 const (
-	// AND
-
 	AndImmediate   byte = 0x29
 	AndZeroPage    byte = 0x25
 	AndZeroPageX   byte = 0x35
@@ -27,9 +24,8 @@ const (
 	AndIndirectY   byte = 0x31
 )
 
+// ASL
 const (
-	// ASL
-
 	AslImmediate   byte = 0x0A
 	AslZeroPage    byte = 0x06
 	AslZeroPageX   byte = 0x16
@@ -37,16 +33,14 @@ const (
 	AslAbsoluteX   byte = 0x1E
 )
 
+// BIT
 const (
-	// BIT
-
 	BitZeroPage    byte = 0x24
 	BitAbsolute    byte = 0x2C
 )
 
+// Branches
 const (
-	// Branches
-
 	Bpl            byte = 0x10
 	Bmi            byte = 0x30
 	Bvc            byte = 0x50
@@ -57,15 +51,13 @@ const (
 	Beq            byte = 0xF0
 )
 
+// BRK
 const (
-	// BRK
-
 	Brk            byte = 0x00
 )
 
+// CMP
 const (
-	// CMP
-
 	CmpImmediate   byte = 0xC9
 	CmpZeroPage    byte = 0xC5
 	CmpZeroPageX   byte = 0xD5
@@ -76,34 +68,30 @@ const (
 	CmpIndirectY   byte = 0xD1
 )
 
+// CPX
 const (
-	// CPX
-
 	CpxImmediate   byte = 0xE0
 	CpxZeroPage    byte = 0xE4
 	CpxAbsolute    byte = 0xEC
 )
 
+// CPY
 const (
-	// CPY
-
 	CpyImmediate   byte = 0xC0
 	CpyZeroPage    byte = 0xC4
 	CpyAbsolute    byte = 0xCC
 )
 
+// DEC
 const (
-	// DEC
-
 	DecZeroPage    byte = 0xC6
 	DecZeroPageX   byte = 0xD6
 	DecAbsolute    byte = 0xCE
 	DecAbsoluteX   byte = 0xDE
 )
 
+// EOR
 const (
-	// EOR
-
 	EorImmediate   byte = 0x49
 	EorZeroPage    byte = 0x45
 	EorZeroPageX   byte = 0x55
@@ -114,9 +102,8 @@ const (
 	EorIndirectY   byte = 0x51
 )
 
+// Processor status
 const (
-	// Processor status
-
 	Clc            byte = 0x18
 	Sec            byte = 0x38
 	Cli            byte = 0x58
@@ -126,31 +113,27 @@ const (
 	Sed            byte = 0xF8
 )
 
+// INC
 const (
-	// INC
-
 	IncZeroPage    byte = 0xE6
 	IncZeroPageX   byte = 0xF6
 	IncAbsolute    byte = 0xEE
 	IncAbsoluteX   byte = 0xFE
 )
 
+// JMP
 const (
-	// JMP
-
 	JmpAbsolute    byte = 0x4C
 	JmpIndirect    byte = 0x6C
 )
 
+// JSR
 const (
-	// JSR
-
 	JsrAbsolute    byte = 0x20
 )
 
+// LDA
 const (
-	// LDA
-
 	LdaImmediate   byte = 0xA9
 	LdaZeroPage    byte = 0xA5
 	LdaZeroPageX   byte = 0xB5
@@ -161,9 +144,8 @@ const (
 	LdaIndirectY   byte = 0xB1
 )
 
+// LDX
 const (
-	// LDX
-
 	LdxImmediate   byte = 0xA2
 	LdxZeroPage    byte = 0xA6
 	LdxZeroPageY   byte = 0xB6
@@ -171,9 +153,8 @@ const (
 	LdxAbsoluteY   byte = 0xBE
 )
 
+// LDY
 const (
-	// LDY
-
 	LdyImmediate   byte = 0xA0
 	LdyZeroPage    byte = 0xA4
 	LdyZeroPageX   byte = 0xB4
@@ -181,9 +162,8 @@ const (
 	LdyAbsoluteX   byte = 0xBC
 )
 
+// LSR
 const (
-	// LSR
-
 	LsrAccumulator byte = 0x4A
 	LsrZeroPage    byte = 0x46
 	LsrZeroPageX   byte = 0x56
@@ -191,15 +171,13 @@ const (
 	LsrAbsoluteX   byte = 0x5E
 )
 
+// NOP
 const (
-	// NOP
-
 	NopImplied     byte = 0xEA
 )
 
+// ORA
 const (
-	// ORA
-
 	OraImmediate   byte = 0x09
 	OraZeroPage    byte = 0x05
 	OraZeroPageX   byte = 0x15
@@ -210,9 +188,8 @@ const (
 	OraIndirectY   byte = 0x11
 )
 
+// Register transfers
 const (
-	// Register transfers
-
 	Tax            byte = 0xAA
 	Txa            byte = 0x8A
 	Dex            byte = 0xCA
@@ -223,9 +200,8 @@ const (
 	Iny            byte = 0xC8
 )
 
+// ROL
 const (
-	// ROL
-
 	RolAccumulator byte = 0x2A
 	RolZeroPage    byte = 0x26
 	RolZeroPageX   byte = 0x36
@@ -233,9 +209,8 @@ const (
 	RolAbsoluteX   byte = 0x3E
 )
 
+// ROR
 const (
-	// ROR
-
 	RorAccumulator byte = 0x6A
 	RorZeroPage    byte = 0x66
 	RorZeroPageX   byte = 0x76
@@ -243,21 +218,18 @@ const (
 	RorAbsoluteX   byte = 0x7E
 )
 
+// RTI
 const (
-	// RTI
-
 	RtiImplied     byte = 0x40
 )
 
+// RTS
 const (
-	// RTS
-
 	RtsImplied     byte = 0x60
 )
 
+// SBC
 const (
-	// SBC
-
 	SbcImmediate   byte = 0xE9
 	SbcZeroPage    byte = 0xE5
 	SbcZeroPageX   byte = 0xF5
@@ -268,9 +240,8 @@ const (
 	SbcIndirectY   byte = 0xF1
 )
 
+// STA
 const (
-	// STA
-
 	StaZeroPage    byte = 0x85
 	StaZeroPageX   byte = 0x95
 	StaAbsolute    byte = 0x8D
@@ -280,9 +251,8 @@ const (
 	StaIndirectY   byte = 0x91
 )
 
+// Stack
 const (
-	// Stack
-
 	Txs            byte = 0x9A
 	Tsx            byte = 0xBA
 	Pha            byte = 0x48
@@ -291,17 +261,15 @@ const (
 	Plp            byte = 0x28
 )
 
+// STX
 const (
-	// STX
-
 	StxZeroPage    byte = 0x86
 	StxZeroPageY   byte = 0x96
 	StxAbsolute    byte = 0x8E
 )
 
+// STY
 const (
-	// STY
-	
 	StyZeroPage    byte = 0x84
 	StyZeroPageX   byte = 0x94
 	StyAbsolute    byte = 0x8C

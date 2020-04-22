@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	_ "strings"
-	_ "github.com/vpenando/nes-rom-decompiler/nes"
+	"github.com/vpenando/nes-rom-decompiler/nes"
 )
 
 const (
@@ -15,11 +15,12 @@ const (
 
 var (
 	inputFile *string
+	outputFile *string
 )
 
 func init() {
-	fmt.Println("Parsing args...")
-	inputFile = flag.String("input", empty, "The ROM")
+	inputFile = flag.String("i", empty, "Input file (*.nes)")
+	outputFile = flag.String("o", empty, "Output file (*.s / *.asm)")
 	flag.Parse()
 	if !checkInputFile() {
 		printUsage()
@@ -36,14 +37,25 @@ func checkInputFile() bool {
 }
 
 func printUsage() {
+	fmt.Println("Options:")
+	fmt.Println("  -i: Input file.")
+	fmt.Println("  -o: Output file. By default stdout.")
+	fmt.Println("Example:")
+	fmt.Println("  ./decompiler -i XXX.nes [-o YYY.asm]")
+}
 
+func tryReadRom() []byte {
+	rom, err := ioutil.ReadFile(*inputFile)
+	if err != nil {
+		panic(fmt.Sprintf("Failed to read '%s'. Aborting.", *inputFile))
+	}
+	if !nes.IsNesFile(rom) {
+		panic("Not a NES ROM.")
+	}
+	return rom
 }
 
 func main() {
-	content, err := ioutil.ReadFile(*inputFile)
-	if err != nil {
-		panic(fmt.Sprintf("Panic: Failed to read '%s'. Aborting.", *inputFile))
-	}
-
-	fmt.Println(nes.IsNesFile(content))
+	rom := tryReadRom()
+	fmt.Println(byte(rom[0]))
 }

@@ -14,6 +14,10 @@ type RomPrg struct {
 	index int
 }
 
+func NewRomPrg(buffer []byte, int startIndex) *RomPrg {
+	return &{hexBuffer: buffer, index: startIndex}
+}
+
 // Next returns the next byte of a PRG ROM, if any.
 // If we already have reached the end of the buffer,
 // the returned error is not nil.
@@ -24,8 +28,4 @@ func (prg *RomPrg) Next() (byte, error) {
 	next := prg.hexBuffer[prg.index]
 	prg.index++
 	return next, nil
-}
-
-func IsNesFile(rom []byte) bool {
-	return len(rom) > 3 && string(rom[0:3]) == "NES" && rom[3] == 0x1A
 }
