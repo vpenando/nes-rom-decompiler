@@ -236,6 +236,142 @@ func Decompile(prg *PrgRom) string {
 	case LdyAbsoluteX:
 		stringInst = fmt.Sprintf("LDY %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
 
+	// NOP
+	case NopImplied:
+		stringInst = "NOP"
+
+	// ORA
+	case OraImmediate:
+		stringInst = fmt.Sprintf("ORA %s", ByteToImmediateValue(nextByte(prg)))
+	case OraZeroPage:
+		stringInst = fmt.Sprintf("ORA %s", ByteToZeroPageAddress(nextByte(prg)))
+	case OraZeroPageX:
+		stringInst = fmt.Sprintf("ORA %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case OraAbsolute:
+		stringInst = fmt.Sprintf("ORA %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case OraAbsoluteX:
+		stringInst = fmt.Sprintf("ORA %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case OraAbsoluteY:
+		stringInst = fmt.Sprintf("ORA %s,Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case OraIndirectX:
+		stringInst = fmt.Sprintf("ORA (%s,X)", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case OraIndirectY:
+		stringInst = fmt.Sprintf("ORA (%s),Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// Register transfers
+	case Tax:
+		stringInst = "TAX"
+	case Txa:
+		stringInst = "TXA"
+	case Dex:
+		stringInst = "DEX"
+	case Inx:
+		stringInst = "INX"
+	case Tay:
+		stringInst = "TAY"
+	case Tya:
+		stringInst = "TYA"
+	case Dey:
+		stringInst = "DEY"
+	case Iny:
+		stringInst = "INY"
+
+	// ROL
+	case RolAccumulator:
+		stringInst = "ROL A"
+	case RolZeroPage:
+		stringInst = fmt.Sprintf("ROL %s", ByteToZeroPageAddress(nextByte(prg)))
+	case RolZeroPageX:
+		stringInst = fmt.Sprintf("ROL %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case RolAbsolute:
+		stringInst = fmt.Sprintf("ROL %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case RolAbsoluteX:
+		stringInst = fmt.Sprintf("ROL %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// ROR
+	case RorAccumulator:
+		stringInst = "ROR A"
+	case RorZeroPage:
+		stringInst = fmt.Sprintf("ROR %s", ByteToZeroPageAddress(nextByte(prg)))
+	case RorZeroPageX:
+		stringInst = fmt.Sprintf("ROR %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case RorAbsolute:
+		stringInst = fmt.Sprintf("ROR %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case RorAbsoluteX:
+		stringInst = fmt.Sprintf("ROR %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// RTI
+	case RtiImplied:
+		stringInst = "RTI"
+
+	// RTS
+	case RtsImplied:
+		stringInst = "RTS"
+
+	// SBC
+	case SbcImmediate:
+		stringInst = fmt.Sprintf("SBC %s", ByteToImmediateValue(nextByte(prg)))
+	case SbcZeroPage:
+		stringInst = fmt.Sprintf("SBC %s", ByteToZeroPageAddress(nextByte(prg)))
+	case SbcZeroPageX:
+		stringInst = fmt.Sprintf("SBC %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case SbcAbsolute:
+		stringInst = fmt.Sprintf("SBC %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case SbcAbsoluteX:
+		stringInst = fmt.Sprintf("SBC %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case SbcAbsoluteY:
+		stringInst = fmt.Sprintf("SBC %s,Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case SbcIndirectX:
+		stringInst = fmt.Sprintf("SBC (%s,X)", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case SbcIndirectY:
+		stringInst = fmt.Sprintf("SBC (%s),Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// STA
+	case StaZeroPage:
+		stringInst = fmt.Sprintf("STA %s", ByteToZeroPageAddress(nextByte(prg)))
+	case StaZeroPageX:
+		stringInst = fmt.Sprintf("STA %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case StaAbsolute:
+		stringInst = fmt.Sprintf("STA %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case StaAbsoluteX:
+		stringInst = fmt.Sprintf("STA %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case StaAbsoluteY:
+		stringInst = fmt.Sprintf("STA %s,Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case StaIndirectX:
+		stringInst = fmt.Sprintf("STA (%s,X)", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case StaIndirectY:
+		stringInst = fmt.Sprintf("STA (%s),Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// Stack
+	case Txs:
+		stringInst = "TXS"
+	case Tsx:
+		stringInst = "TSX"
+	case Pha:
+		stringInst = "PHA"
+	case Pla:
+		stringInst = "PLA"
+	case Php:
+		stringInst = "PHP"
+	case Plp:
+		stringInst = "PLP"
+
+	// STX
+	case StxZeroPage:
+		stringInst = fmt.Sprintf("STX %s", ByteToZeroPageAddress(nextByte(prg)))
+	case StxZeroPageY:
+		stringInst = fmt.Sprintf("STX %s,Y", ByteToZeroPageAddress(nextByte(prg)))
+	case StxAbsolute:
+		stringInst = fmt.Sprintf("STX %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// STY
+	case StyZeroPage:
+		stringInst = fmt.Sprintf("STY %s", ByteToZeroPageAddress(nextByte(prg)))
+	case StyZeroPageX:
+		stringInst = fmt.Sprintf("STY %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case StyAbsolute:
+		stringInst = fmt.Sprintf("STY %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+
 	}
 	
 	return fmt.Sprintf("%s\n%s", stringInst, Decompile(prg))
