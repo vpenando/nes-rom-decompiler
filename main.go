@@ -63,5 +63,5 @@ func main() {
 	} else if nes.IsNesFile(rom) {
 		prg = nes.ReadNesPrgRom(rom)
 	}
-	fmt.Println(prg.Size())
+	fmt.Println(nes.Decompile(prg))
 }

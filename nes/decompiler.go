@@ -36,7 +36,7 @@ func Decompile(prg *PrgRom) string {
 	case AdcIndirectX:
 		stringInst = fmt.Sprintf("ADC (%s,X)", BytesToAddress(nextByte(prg), nextByte(prg)))
 	case AdcIndirectY:
-		stringInst = fmt.Sprintf("ADC (%s,Y)", BytesToAddress(nextByte(prg), nextByte(prg)))
+		stringInst = fmt.Sprintf("ADC (%s),Y", BytesToAddress(nextByte(prg), nextByte(prg)))
 
 	// AND
 	case AndImmediate:
@@ -54,7 +54,7 @@ func Decompile(prg *PrgRom) string {
 	case AndIndirectX:
 		stringInst = fmt.Sprintf("AND (%s,X)", BytesToAddress(nextByte(prg), nextByte(prg)))
 	case AndIndirectY:
-		stringInst = fmt.Sprintf("AND (%s,Y)", BytesToAddress(nextByte(prg), nextByte(prg)))
+		stringInst = fmt.Sprintf("AND (%s),Y", BytesToAddress(nextByte(prg), nextByte(prg)))
 
 	// ASL
 	case AslImmediate:
@@ -73,6 +73,127 @@ func Decompile(prg *PrgRom) string {
 		stringInst = fmt.Sprintf("BIT %s", ByteToZeroPageAddress(nextByte(prg)))
 	case BitAbsolute:
 		stringInst = fmt.Sprintf("BIT %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// Branches
+	case Bpl:
+		stringInst = fmt.Sprintf("BPL %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case Bmi:
+		stringInst = fmt.Sprintf("BMI %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case Bvc:
+		stringInst = fmt.Sprintf("BVC %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case Bvs:
+		stringInst = fmt.Sprintf("BVS %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case Bcc:
+		stringInst = fmt.Sprintf("BCC %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case Bcs:
+		stringInst = fmt.Sprintf("BCS %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case Bne:
+		stringInst = fmt.Sprintf("BNE %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case Beq:
+		stringInst = fmt.Sprintf("BEQ %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// BRK
+	case Brk:
+		stringInst = "BRK"
+
+	// CMP
+	case CmpImmediate:
+		stringInst = fmt.Sprintf("CMP %s", ByteToImmediateValue(nextByte(prg)))
+	case CmpZeroPage:
+		stringInst = fmt.Sprintf("CMP %s", ByteToZeroPageAddress(nextByte(prg)))
+	case CmpZeroPageX:
+		stringInst = fmt.Sprintf("CMP %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case CmpAbsolute:
+		stringInst = fmt.Sprintf("CMP %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case CmpAbsoluteX:
+		stringInst = fmt.Sprintf("CMP %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case CmpAbsoluteY:
+		stringInst = fmt.Sprintf("CMP %s,Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case CmpIndirectX:
+		stringInst = fmt.Sprintf("CMP (%s,X)", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case CmpIndirectY:
+		stringInst = fmt.Sprintf("CMP (%s),Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// CPX
+	case CpxImmediate:
+		stringInst = fmt.Sprintf("CPX %s", ByteToImmediateValue(nextByte(prg)))
+	case CpxZeroPage:
+		stringInst = fmt.Sprintf("CPX %s", ByteToZeroPageAddress(nextByte(prg)))
+	case CpxAbsolute:
+		stringInst = fmt.Sprintf("CPX %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// CPY
+	case CpyImmediate:
+		stringInst = fmt.Sprintf("CPY %s", ByteToImmediateValue(nextByte(prg)))
+	case CpyZeroPage:
+		stringInst = fmt.Sprintf("CPY %s", ByteToZeroPageAddress(nextByte(prg)))
+	case CpyAbsolute:
+		stringInst = fmt.Sprintf("CPY %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	
+	// DEC
+	case DecZeroPage:
+		stringInst = fmt.Sprintf("DEC %s", ByteToZeroPageAddress(nextByte(prg)))
+	case DecZeroPageX:
+		stringInst = fmt.Sprintf("DEC %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case DecAbsolute:
+		stringInst = fmt.Sprintf("DEC %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case DecAbsoluteX:
+		stringInst = fmt.Sprintf("DEC %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// EOR
+	case EorImmediate:
+		stringInst = fmt.Sprintf("EOR %s", ByteToImmediateValue(nextByte(prg)))
+	case EorZeroPage:
+		stringInst = fmt.Sprintf("EOR %s", ByteToZeroPageAddress(nextByte(prg)))
+	case EorZeroPageX:
+		stringInst = fmt.Sprintf("EOR %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case EorAbsolute:
+		stringInst = fmt.Sprintf("EOR %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case EorAbsoluteX:
+		stringInst = fmt.Sprintf("EOR %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case EorAbsoluteY:
+		stringInst = fmt.Sprintf("EOR %s,Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case EorIndirectX:
+		stringInst = fmt.Sprintf("EOR (%s,X)", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case EorIndirectY:
+		stringInst = fmt.Sprintf("EOR (%s),Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// Processor status
+	case Clc:
+		stringInst = "CLC"
+	case Sec:
+		stringInst = "SEC"
+	case Cli:
+		stringInst = "CLI"
+	case Sei:
+		stringInst = "SEI"
+	case Clv:
+		stringInst = "CLV"
+	case Cld:
+		stringInst = "CLD"
+	case Sed:
+		stringInst = "SED"
+
+	// INC
+	case IncZeroPage:
+		stringInst = fmt.Sprintf("INC %s", ByteToZeroPageAddress(nextByte(prg)))
+	case IncZeroPageX:
+		stringInst = fmt.Sprintf("INC %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case IncAbsolute:
+		stringInst = fmt.Sprintf("INC %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case IncAbsoluteX:
+		stringInst = fmt.Sprintf("INC %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// JMP
+	case JmpAbsolute:
+		stringInst = fmt.Sprintf("JMP %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case JmpIndirect:
+		stringInst = fmt.Sprintf("JMP (%s)", BytesToAddress(nextByte(prg), nextByte(prg)))
+
+	// JSR
+	case JsrAbsolute:
+		stringInst = fmt.Sprintf("JSR %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+
 
 	}
 	
