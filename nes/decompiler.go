@@ -14,7 +14,7 @@ type RomPrg struct {
 	index int
 }
 
-func NewRomPrg(buffer []byte, int startIndex) *RomPrg {
+func NewRomPrg(buffer []byte, startIndex int) *RomPrg {
 	return &RomPrg{hexBuffer: buffer, index: startIndex}
 }
 
