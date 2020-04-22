@@ -24,7 +24,7 @@ func ReadNes2PrgRom(rom []byte) *PrgRom {
 	if rom[6] & 0b00000100 != 0 {
 		prgRomStartIndex += 512
 	}
-	prgRomSize = int(rom[4]) + (int(rom[9] & 0b00001111) << 8)
+	prgRomSize := int(rom[4]) + (int(rom[9] & 0b00001111) << 8)
 	return newPrgRom(rom[prgRomStartIndex:prgRomSize], 0)
 }
 
