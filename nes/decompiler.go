@@ -15,7 +15,7 @@ type RomPrg struct {
 }
 
 func NewRomPrg(buffer []byte, int startIndex) *RomPrg {
-	return &{hexBuffer: buffer, index: startIndex}
+	return &RomPrg{hexBuffer: buffer, index: startIndex}
 }
 
 // Next returns the next byte of a PRG ROM, if any.
