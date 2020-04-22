@@ -20,10 +20,10 @@ func ByteToImmediateValue(b byte) string {
 	return fmt.Sprintf("#$%s", hexByte)
 }
 
-// BytesToZeroPageAddress turns a byte into
+// ByteToZeroPageAddress turns a byte into
 // a 6502 Zero Page address.
-// Example: BytesToZeroPageAddress(18) == "$12"
-func BytesToZeroPageAddress(b byte) string {
+// Example: ByteToZeroPageAddress(18) == "$12"
+func ByteToZeroPageAddress(b byte) string {
 	address := byteToHexString(b)
 	return fmt.Sprintf("$%s", address)
 }

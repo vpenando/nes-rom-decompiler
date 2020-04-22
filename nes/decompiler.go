@@ -22,6 +22,20 @@ func Decompile(prg *PrgRom) string {
 	switch inst {
 	case AdcImmediate:
 		stringInst = fmt.Sprintf("ADC %s", ByteToImmediateValue(nextByte(prg)))
+	case AdcZeroPage:
+		stringInst = fmt.Sprintf("ADC %s", ByteToZeroPageAddress(nextByte(prg)))
+	case AdcZeroPageX:
+		stringInst = fmt.Sprintf("ADC %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case AdcAbsolute:
+		stringInst = fmt.Sprintf("ADC %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case AdcAbsoluteX:
+		stringInst = fmt.Sprintf("ADC %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case AdcAbsoluteY:
+		stringInst = fmt.Sprintf("ADC %s,Y", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case AdcIndirectX:
+		stringInst = fmt.Sprintf("ADC (%s,X)", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case AdcIndirectY:
+		stringInst = fmt.Sprintf("ADC (%s,Y)", BytesToAddress(nextByte(prg), nextByte(prg)))
 	}
 	return fmt.Sprintf("%s\n%s", stringInst, Decompile(prg))
 }
