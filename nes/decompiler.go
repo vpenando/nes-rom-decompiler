@@ -16,7 +16,7 @@ func Decompile(prg *PrgRom) string {
 	inst, err := prg.Next()
 	if err != nil {
 		// We have reached the end of the PRG ROM
-		return ""
+		return "; EOF"
 	}
 	var stringInst string
 	switch inst {
@@ -385,7 +385,7 @@ func Decompile(prg *PrgRom) string {
 		stringInst = fmt.Sprintf("STY %s", BytesToAddress(nextByte(prg), nextByte(prg)))
 
 	default:
-		stringInst = fmt.Sprintf("; Unknown opcode %s", ByteToHexString(nextByte(prg)))
+		stringInst = fmt.Sprintf("; Unknown opcode %s", ByteToHexString(inst))
 	}
 	
 	return fmt.Sprintf("%s\n%s", stringInst, Decompile(prg))
