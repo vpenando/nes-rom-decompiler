@@ -26,7 +26,7 @@ func ReadNesPrgRom(rom []byte) *PrgRom {
 	}
 	prgRomStartIndex := 16 // Header size
 	if rom[6] & 0b00000100 != 0 {
-		prgRomStartIndex += 512
+		prgRomStartIndex += 512 // Trainer size
 	}
 	prgRomSize := int(rom[4]) * 16384
 	return newPrgRom(rom[prgRomStartIndex:prgRomSize], 0)

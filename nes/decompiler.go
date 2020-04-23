@@ -236,6 +236,18 @@ func Decompile(prg *PrgRom) string {
 	case LdyAbsoluteX:
 		stringInst = fmt.Sprintf("LDY %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
 
+	// LSR
+	case LsrAccumulator:
+		stringInst = "LSR A"
+	case LsrZeroPage:
+		stringInst = fmt.Sprintf("LSR %s", ByteToZeroPageAddress(nextByte(prg)))
+	case LsrZeroPageX:
+		stringInst = fmt.Sprintf("LSR %s,X", ByteToZeroPageAddress(nextByte(prg)))
+	case LsrAbsolute:
+		stringInst = fmt.Sprintf("LSR %s", BytesToAddress(nextByte(prg), nextByte(prg)))
+	case LsrAbsoluteX:
+		stringInst = fmt.Sprintf("LSR %s,X", BytesToAddress(nextByte(prg), nextByte(prg)))
+
 	// NOP
 	case NopImplied:
 		stringInst = "NOP"
