@@ -7,8 +7,8 @@ import (
 // HexBuffer is a raw buffer containing bytes
 type HexBuffer []byte
 
-// PrgRom represents NES ROM PRG
-// It holds an internal buffer and an index
+// PrgRom represents NES ROM PRG.
+// It holds an internal buffer and an index.
 type PrgRom struct {
 	hexBuffer HexBuffer
 	index int
