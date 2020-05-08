@@ -1,8 +1,14 @@
 package nes
 
 import (
+	"fmt"
 	"testing"
 )
+
+func ExampleByteToHexString() {
+	hex := ByteToHexString(255)
+	fmt.Println(hex)  // "FF"
+}
 
 func TestByteToHexString(t *testing.T) {
 	var expectedResults = map[byte]string{
