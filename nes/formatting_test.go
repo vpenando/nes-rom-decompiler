@@ -7,7 +7,8 @@ import (
 
 func ExampleByteToHexString() {
 	hex := ByteToHexString(255)
-	fmt.Println(hex)  // "FF"
+	fmt.Println(hex)
+	// Output: "FF"
 }
 
 func TestByteToHexString(t *testing.T) {
