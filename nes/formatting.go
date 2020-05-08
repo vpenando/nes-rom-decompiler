@@ -7,14 +7,14 @@ import (
 
 // ByteToHexString returns the hex equivalent
 // of a given byte.
-// Example: ByteToHexString(10) == "0A"
+//  ByteToHexString(10) == "0A"
 func ByteToHexString(b byte) string {
-	return strings.ToUpper(fmt.Sprintf("%x", b))
+	return strings.ToUpper(fmt.Sprintf("%02x", b))
 }
 
 // ByteToImmediateValue returns the 6502 equivalent
 // of a literal value.
-// Example: ByteToImmediateValue(10) == "#$0A"
+//  ByteToImmediateValue(10) == "#$0A"
 func ByteToImmediateValue(b byte) string {
 	hexByte := ByteToHexString(b)
 	return fmt.Sprintf("#$%s", hexByte)
@@ -22,7 +22,7 @@ func ByteToImmediateValue(b byte) string {
 
 // ByteToZeroPageAddress turns a byte into
 // a 6502 Zero Page address.
-// Example: ByteToZeroPageAddress(18) == "$12"
+//  ByteToZeroPageAddress(18) == "$12"
 func ByteToZeroPageAddress(b byte) string {
 	address := ByteToHexString(b)
 	return fmt.Sprintf("$%s", address)
@@ -30,7 +30,7 @@ func ByteToZeroPageAddress(b byte) string {
 
 // BytesToAddress turns a lower and upper bytes into
 // a 6502 address (big endian).
-// Example: BytesToAddress(52, 18) == "$1234"
+//  BytesToAddress(52, 18) == "$1234"
 func BytesToAddress(upper, lower byte) string {
 	upperByte := ByteToHexString(upper)
 	lowerByte := ByteToHexString(lower)
