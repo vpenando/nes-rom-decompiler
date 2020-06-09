@@ -40,6 +40,7 @@ func TestByteToHexString(t *testing.T) {
 		240: "F0", 241: "F1", 242: "F2", 243: "F3", 244: "F4", 245: "F5", 246: "F6", 247: "F7", 248: "F8", 249: "F9",
 		250: "FA", 251: "FB", 252: "FC", 253: "FD", 254: "FE",
 	}
+
 	for k, v := range expectedResults {
 		if ByteToHexString(k) != v {
 			t.Errorf("Invalid value: expected '%s', got '%s'", v, ByteToHexString(k))
@@ -76,6 +77,7 @@ func TestByteToImmediateValue(t *testing.T) {
 		240: "#$F0", 241: "#$F1", 242: "#$F2", 243: "#$F3", 244: "#$F4", 245: "#$F5", 246: "#$F6", 247: "#$F7", 248: "#$F8", 249: "#$F9",
 		250: "#$FA", 251: "#$FB", 252: "#$FC", 253: "#$FD", 254: "#$FE",
 	}
+
 	for k, v := range expectedResults {
 		if ByteToImmediateValue(k) != v {
 			t.Errorf("Invalid value: expected '%s', got '%s'", v, ByteToImmediateValue(k))
@@ -112,9 +114,14 @@ func TestByteToZeroPageAddress(t *testing.T) {
 		240: "$F0", 241: "$F1", 242: "$F2", 243: "$F3", 244: "$F4", 245: "$F5", 246: "$F6", 247: "$F7", 248: "$F8", 249: "$F9",
 		250: "$FA", 251: "$FB", 252: "$FC", 253: "$FD", 254: "$FE",
 	}
+
 	for k, v := range expectedResults {
 		if ByteToZeroPageAddress(k) != v {
 			t.Errorf("Invalid value: expected '%s', got '%s'", v, ByteToZeroPageAddress(k))
 		}
 	}
+}
+
+func TestBytesToAddress(t *testing.T) {
+
 }

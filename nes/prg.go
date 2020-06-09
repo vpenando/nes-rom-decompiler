@@ -11,7 +11,7 @@ type HexBuffer []byte
 // It holds an internal buffer and an index.
 type PrgRom struct {
 	hexBuffer HexBuffer
-	index int
+	index     int
 }
 
 func newPrgRom(buffer []byte, startIndex int) *PrgRom {
@@ -25,7 +25,7 @@ func ReadNesPrgRom(rom []byte) *PrgRom {
 		panic("Not an iNES file!")
 	}
 	prgRomStartIndex := 16 // Header size
-	if rom[6] & 0b00000100 != 0 {
+	if rom[6]&0b00000100 != 0 {
 		prgRomStartIndex += 512 // Trainer size
 	}
 	prgRomSize := int(rom[4]) * 16384
@@ -40,10 +40,10 @@ func ReadNes2PrgRom(rom []byte) *PrgRom {
 	}
 	prgRomStartIndex := 16 // Header size
 	// If bit 2 of Header byte 6 is set, trainer size is 512 bytes
-	if rom[6] & 0b00000100 != 0 {
+	if rom[6]&0b00000100 != 0 {
 		prgRomStartIndex += 512
 	}
-	prgRomSize := int(rom[4]) + (int(rom[9] & 0b00001111) << 8)
+	prgRomSize := int(rom[4]) + (int(rom[9]&0b00001111) << 8)
 	return newPrgRom(rom[prgRomStartIndex:prgRomSize], 0)
 }
 
