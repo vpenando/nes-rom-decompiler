@@ -12,6 +12,7 @@ func nextByte(prg *PrgRom) byte {
 	return b
 }
 
+// Decompile returns a raw PRG ROM's ASM content.
 func Decompile(prg *PrgRom) string {
 	inst, err := prg.Next()
 	if err != nil {
@@ -129,7 +130,7 @@ func Decompile(prg *PrgRom) string {
 		stringInst = fmt.Sprintf("CPY %s", ByteToZeroPageAddress(nextByte(prg)))
 	case CpyAbsolute:
 		stringInst = fmt.Sprintf("CPY %s", BytesToAddress(nextByte(prg), nextByte(prg)))
-	
+
 	// DEC
 	case DecZeroPage:
 		stringInst = fmt.Sprintf("DEC %s", ByteToZeroPageAddress(nextByte(prg)))
@@ -387,6 +388,6 @@ func Decompile(prg *PrgRom) string {
 	default:
 		stringInst = fmt.Sprintf("; Unknown opcode %s", ByteToHexString(inst))
 	}
-	
+
 	return fmt.Sprintf("%s\n%s", stringInst, Decompile(prg))
 }
