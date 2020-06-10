@@ -5,12 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	_ "strings"
+	
 	"github.com/vpenando/nes-rom-decompiler/nes"
-)
-
-const (
-	empty = ""
 )
 
 var (
@@ -19,8 +15,8 @@ var (
 )
 
 func init() {
-	inputFile = flag.String("i", empty, "Input file (*.nes)")
-	outputFile = flag.String("o", empty, "Output file (*.s / *.asm)")
+	inputFile = flag.String("i", "", "Input file (*.nes)")
+	outputFile = flag.String("o", "", "Output file (*.s / *.asm)")
 	flag.Parse()
 	if !checkInputFile() {
 		printUsage()
@@ -29,7 +25,7 @@ func init() {
 }
 
 func checkInputFile() bool {
-	if *inputFile == empty {
+	if *inputFile == "" {
 		fmt.Println("Error: No input file.")
 		return false
 	}
