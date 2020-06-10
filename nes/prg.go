@@ -35,7 +35,7 @@ func ReadNesPrgRom(rom []byte) *PrgRom {
 // ReadNes2PrgRom returns the PRG ROM of a NES 2.0 ROM.
 // See https://wiki.nesdev.com/w/index.php/NES_2.0#PRG-ROM_Area
 func ReadNes2PrgRom(rom []byte) *PrgRom {
-	if !IsNes2File(rom) {
+	if !IsNes2File(rom) || len(rom) < 10 {
 		panic("Not a NES 2.0 file!")
 	}
 	prgRomStartIndex := 16 // Header size
@@ -44,6 +44,9 @@ func ReadNes2PrgRom(rom []byte) *PrgRom {
 		prgRomStartIndex += 512
 	}
 	prgRomSize := int(rom[4]) + (int(rom[9]&0b00001111) << 8)
+	if len(rom) < prgRomStartIndex+prgRomSize {
+		panic("Invalid ROM length")
+	}
 	return newPrgRom(rom[prgRomStartIndex:prgRomSize], 0)
 }
 
