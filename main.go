@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	_ "strings"
 	
 	"github.com/vpenando/nes-rom-decompiler/nes"
 )
