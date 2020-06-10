@@ -5,8 +5,8 @@ import (
 )
 
 func TestIsNesFile(t *testing.T) {
-	validBytes := []byte{'N', 'E', 'S', 0x1A}
-	invalidBytes := []byte{'N', 'E', 'S'}
+	validBytes := []byte("NES\x1A")
+	invalidBytes := []byte("NES")
 
 	if !IsNesFile(validBytes) {
 		t.Errorf("Not a NES file")
@@ -18,8 +18,8 @@ func TestIsNesFile(t *testing.T) {
 }
 
 func TestIsNes2File(t *testing.T) {
-	validBytes := []byte{'N', 'E', 'S', 0x1A, 0, 0, 0, 0x08}
-	invalidBytes := []byte{'N', 'E', 'S', 0x1A, 0, 0, 0, 0}
+	validBytes := []byte("NES\x1A\x00\x00\x00\x08")
+	invalidBytes := []byte("NES\x1A\x00\x00\x00\x00")
 
 	if !IsNes2File(validBytes) {
 		t.Errorf("Not a NES 2.0 file")
