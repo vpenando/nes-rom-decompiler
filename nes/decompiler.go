@@ -5,7 +5,7 @@ import (
 )
 
 func nextByte(prg *PrgRom) byte {
-	b, err := prg.Next()
+	b, err := prg.next()
 	if err != nil {
 		panic(fmt.Sprintf("Unexpected error: %s", err.Error()))
 	}
@@ -14,7 +14,7 @@ func nextByte(prg *PrgRom) byte {
 
 // Decompile returns a raw PRG ROM's ASM content.
 func Decompile(prg *PrgRom) string {
-	inst, err := prg.Next()
+	inst, err := prg.next()
 	if err != nil {
 		// We have reached the end of the PRG ROM
 		return "; EOF"
