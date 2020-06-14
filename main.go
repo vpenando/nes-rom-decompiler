@@ -5,17 +5,17 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	
+
 	"github.com/vpenando/nes-rom-decompiler/nes"
 )
 
 var (
-	inputFile *string
+	inputFile  *string
 	outputFile *string
 )
 
 func init() {
-	inputFile = flag.String("i", "empty", "Input file (*.nes)")
+	inputFile = flag.String("i", "", "Input file (*.nes)")
 	outputFile = flag.String("o", "stdout", "Output file (*.s / *.asm)")
 	flag.Parse()
 	if !checkInputFile() {
@@ -35,12 +35,12 @@ func checkInputFile() bool {
 func printUsage() {
 	fmt.Println("Options:")
 	pattern := "  -%s: %s (default value: %s)"
-	
+
 	inputFileFlag := flag.Lookup("i")
-	fmt.Println(fmt.Sprintf(pattern , inputFileFlag.Name, inputFileFlag.Usage, inputFileFlag.DefValue))
-	
+	fmt.Println(fmt.Sprintf(pattern, inputFileFlag.Name, inputFileFlag.Usage, inputFileFlag.DefValue))
+
 	outputFileFlag := flag.Lookup("o")
-	fmt.Println(fmt.Sprintf(pattern , outputFileFlag.Name, outputFileFlag.Usage, outputFileFlag.DefValue))
+	fmt.Println(fmt.Sprintf(pattern, outputFileFlag.Name, outputFileFlag.Usage, outputFileFlag.DefValue))
 
 	fmt.Println("Example:")
 	fmt.Println("  ./decompiler -i XXX.nes [-o YYY.asm]")

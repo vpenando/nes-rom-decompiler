@@ -47,13 +47,13 @@ func ReadNes2PrgRom(rom []byte) *PrgRom {
 	return newPrgRom(rom[prgRomStartIndex:prgRomSize], 0)
 }
 
-func (prg *PrgRom) next() (byte, error) {
+func (prg *PrgRom) next() (byte, bool) {
 	if prg.index == len(prg.bytes) {
-		return 0, errors.New("Reached end of buffer")
+		return 0, false
 	}
 	nextByte := prg.bytes[prg.index]
 	prg.index++
-	return nextByte, nil
+	return nextByte, true
 }
 
 // Size method returns the size of the internal buffer
