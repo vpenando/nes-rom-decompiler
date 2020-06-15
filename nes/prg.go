@@ -1,9 +1,5 @@
 package nes
 
-import (
-	"errors"
-)
-
 // PrgRom represents NES ROM PRG.
 // It holds an internal buffer and an index.
 type PrgRom struct {
