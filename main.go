@@ -16,7 +16,7 @@ var (
 
 func init() {
 	inputFile = flag.String("i", "", "Input file (*.nes)")
-	outputFile = flag.String("o", "stdout", "Output file (*.s / *.asm)")
+	outputFile = flag.String("o", "", "Output file (*.s / *.asm)")
 	flag.Parse()
 	if !checkInputFile() {
 		printUsage()
@@ -34,13 +34,13 @@ func checkInputFile() bool {
 
 func printUsage() {
 	fmt.Println("Options:")
-	pattern := "  -%s: %s (default value: %s)"
+	pattern := "  -%s: %s"
 
 	inputFileFlag := flag.Lookup("i")
-	fmt.Println(fmt.Sprintf(pattern, inputFileFlag.Name, inputFileFlag.Usage, inputFileFlag.DefValue))
+	fmt.Println(fmt.Sprintf(pattern, inputFileFlag.Name, inputFileFlag.Usage))
 
 	outputFileFlag := flag.Lookup("o")
-	fmt.Println(fmt.Sprintf(pattern, outputFileFlag.Name, outputFileFlag.Usage, outputFileFlag.DefValue))
+	fmt.Println(fmt.Sprintf(pattern, outputFileFlag.Name, outputFileFlag.Usage))
 
 	fmt.Println("Example:")
 	fmt.Println("  ./decompiler -i XXX.nes [-o YYY.asm]")
