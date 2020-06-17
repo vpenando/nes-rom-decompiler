@@ -51,9 +51,3 @@ func (prg *PrgRom) next() (byte, bool) {
 	prg.index++
 	return nextByte, true
 }
-
-// Size method returns the size of the internal buffer
-// of `prg`, i.e the number of bytes contained in the PRG ROM.
-func (prg PrgRom) Size() int {
-	return len(prg.bytes)
-}
