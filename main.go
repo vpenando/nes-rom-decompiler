@@ -74,7 +74,7 @@ func writePrg(reader *nes.PrgRomReader) error {
 
 func main() {
 	rom := tryReadRom()
-	var reader *nes.NewPrgRomReader
+	var reader *nes.PrgRomReader
 	if nes.IsNes2File(rom) {
 		reader = nes.ReadNes2PrgRom(rom)
 	} else if nes.IsNesFile(rom) {
