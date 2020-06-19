@@ -9,7 +9,7 @@ type PrgRomReader struct {
 	index int
 }
 
-func newPrgRomReader(buffer []byte) *PrgRomReader {
+func NewPrgRomReader(buffer []byte) *PrgRomReader {
 	return &PrgRomReader{rom: buffer, index: 0}
 }
 
@@ -25,7 +25,7 @@ func ReadNesPrgRom(rom []byte) *PrgRomReader {
 	}
 	prgRomSize := int(rom[4]) * 16384
 	prg := rom[prgRomStartIndex:prgRomSize]
-	return newPrgRomReader(prg)
+	return NewPrgRomReader(prg)
 }
 
 // ReadNes2PrgRom returns the PRG ROM of a NES 2.0 ROM.
@@ -44,7 +44,7 @@ func ReadNes2PrgRom(rom []byte) *PrgRomReader {
 		panic("Invalid ROM length")
 	}
 	prg := rom[prgRomStartIndex:prgRomSize]
-	return newPrgRomReader(prg)
+	return NewPrgRomReader(prg)
 }
 
 func (reader *PrgRomReader) next() (byte, bool) {

@@ -57,8 +57,8 @@ func tryReadRom() []byte {
 	return rom
 }
 
-func writePrg(prg *nes.PrgRom) error {
-	asm := nes.Decompile(prg)
+func writePrg(reader *nes.PrgRomReader) error {
+	asm := reader.Decompile()
 	if *outputFile == "" {
 		fmt.Println(asm)
 		return nil
@@ -74,11 +74,11 @@ func writePrg(prg *nes.PrgRom) error {
 
 func main() {
 	rom := tryReadRom()
-	var prg *nes.PrgRom
+	var reader *nes.NewPrgRomReader
 	if nes.IsNes2File(rom) {
-		prg = nes.ReadNes2PrgRom(rom)
+		reader = nes.ReadNes2PrgRom(rom)
 	} else if nes.IsNesFile(rom) {
-		prg = nes.ReadNesPrgRom(rom)
+		reader = nes.ReadNesPrgRom(rom)
 	}
-	writePrg(prg)
+	writePrg(reader)
 }
