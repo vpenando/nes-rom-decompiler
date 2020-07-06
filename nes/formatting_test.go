@@ -3,6 +3,8 @@ package nes
 import (
 	"fmt"
 	"testing"
+	
+	"github.com/stretchr/testify/assert"
 )
 
 func ExampleByteToHexString() {
@@ -79,9 +81,7 @@ func TestByteToImmediateValue(t *testing.T) {
 	}
 
 	for k, v := range expectedResults {
-		if ByteToImmediateValue(k) != v {
-			t.Errorf("Invalid value: expected '%s', got '%s'", v, ByteToImmediateValue(k))
-		}
+		assert.Equal(t, ByteToImmediateValue(k), v)
 	}
 }
 
@@ -116,9 +116,7 @@ func TestByteToZeroPageAddress(t *testing.T) {
 	}
 
 	for k, v := range expectedResults {
-		if ByteToZeroPageAddress(k) != v {
-			t.Errorf("Invalid value: expected '%s', got '%s'", v, ByteToZeroPageAddress(k))
-		}
+		assert.Equal(t, ByteToZeroPageAddress(k), v)
 	}
 }
 
